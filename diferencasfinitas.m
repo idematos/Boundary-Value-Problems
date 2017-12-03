@@ -19,20 +19,20 @@ function w = diferencasfinitas(a,b,alpha,beta,N,TOL,M,f)
   while (k <= M)
     x = a + h;
     t = (w(3) - alpha)/(2*h);
-    A(1) = 2 + h**2; #fy = 1
+    A(1) = 2 - h**2; #fy = -1
     B(1) = -1+(h/2)*(-2*t); #fy' = -2y'
     D(1) = -(2*w(2)-w(3)-alpha+(h**2)*f(x,w(2),t));
     for i = 2:(N-1)
       x = a + i*h;
       t = (w(i+2)-w(i))/(2*h);
-      A(i) = 2+h**2;
+      A(i) = 2-h**2;
       B(i) = -1+(h/2)*(-2*t);
       C(i) = -1-(h/2)*(-2*t);
       D(i) = -(2*w(i+1)-w(i+2)-w(i)+h**2*f(x,w(i+1),t));
     endfor
     x = b - h;
     t = (beta - w(N))/(2*h);
-    A(N) = 2+h**2;
+    A(N) = 2-h**2;
     C(N) = -1-(h/2)*(-2*t);
     D(N) = -(2*w(N+1)-w(N)-beta+(h**2)*f(x,w(N+1),t));
     
@@ -67,6 +67,7 @@ function w = diferencasfinitas(a,b,alpha,beta,N,TOL,M,f)
       endfor
      return
     endif
+    k = k+1;
   endwhile
   disp('Numero maximo de iteracoes excedido');
 endfunction
