@@ -1,7 +1,7 @@
 # Isabela Vegini de Matos 8531362
 
-function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
-  h = (b-a)/N;
+function W = shootingnaolinear(a,b,alpha,beta,h,TOL,M,f)
+  N = (b-a)/h;
   k = 1;
   TK = (beta - alpha)/(b - a);
   
@@ -11,10 +11,10 @@ function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
     W(2,1) = TK;    
     u1 = 0;
     u2 = 1;
-    for i = 2:N+1 # RK-4
+    for i = 2:(N+1) # RK-4
       x = a + (i-1)*h;
       k11 = h*W(2,i-1);
-      k12 = h*f(x,W(1:2,i-1));
+      k12 = h*f(x,W(1,i-1),W(2,i-1));
       k21 = h*(W(2,i-1)+0.5*k12);
       k22 = h*f(x+0.5*h,W(1,i-1)+0.5*k11,W(2,i-1)+0.5*k12);
       k31 = h*(W(2,i-1)+0.5*k22);
@@ -35,17 +35,19 @@ function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
       u2 = u2 + (1/6)*(k_12+2*k_22+2*k_32+k_42);
     endfor
     
-    if(abs(W(1,N) - beta) <= TOL)
-      for i = 1:N+1
+    #disp(W);
+    if(abs(W(2,N+1) - beta) <= TOL)
+      for i = 1:(N+1)
         x = a + i*h;
         W(3,i) = x;
       endfor
+      disp('Teste');
       return
     endif
     
-    TK = TK - (W(1,N) - beta) / u1;
+    TK = TK - (W(1,N+1) - beta) / u1;
     k = k+1;
   endwhile
   
-  print('Número máximo de iterações excedido!');
+  disp('Numero maximo de iteracoes excedido!');
 endfunction
