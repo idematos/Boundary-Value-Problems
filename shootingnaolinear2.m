@@ -1,6 +1,6 @@
 # Isabela Vegini de Matos 8531362
 
-function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
+function W = shootingnaolinear2(a,b,alpha,beta,N,TOL,M,f)
   h = (b-a)/N;
   k = 1;
   TK = (beta - alpha)/(b - a);
@@ -35,11 +35,15 @@ function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
       u1 = u1 + (1/6)*(k_11+2*k_21+2*k_31+k_41);
       u2 = u2 + (1/6)*(k_12+2*k_22+2*k_32+k_42);
     endfor
-    if(abs(W(1,N+1) - beta) <= TOL)
+    if(abs(W(2,N+1) - beta) <= TOL)
+      for i = 0:N
+        x = a + i*h;
+        disp(x), disp(W(1,i+1)), disp('');
+      endfor
       return
     endif
     
-    TK = TK - (W(1,N+1) - beta) / u1;
+    TK = TK - (W(2,N+1) - beta) / u2;
     k = k+1;
   endwhile
 
