@@ -4,9 +4,9 @@ a = 1;
 b = 5;
 alpha = 0;
 beta = log(5);
-N = 7;
+N = 15;
 TOL = 0.001; # erro de newton 
-M = 1000;
+M = 100;
 
 f = @(x,w,z) -(z^2)-w+log(x);
 

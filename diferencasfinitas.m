@@ -56,7 +56,7 @@ function w = diferencasfinitas(a,b,alpha,beta,N,TOL,M,f)
     v(N) = z(N);
     w(N+1) = w(N+1) + v(N);
     
-    for i = 1:(N-1)
+    for i = (N-1):-1:1
       v(i) = z(i) - u(i)*v(i+1);
       w(i+1) = w(i+1) + v(i);
     endfor  
