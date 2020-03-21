@@ -1,6 +1,4 @@
-# Isabela Vegini de Matos 8531362
-
-function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
+function W = nonLinearShooting(a,b,alpha,beta,N,TOL,M,f)
   h = (b-a)/N;
   k = 1;
   TK = (beta - alpha)/(b - a);
@@ -43,5 +41,5 @@ function W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f)
     k = k+1;
   endwhile
 
-  disp('Numero maximo de iteracoes excedido!');
+  disp('Maximum number of iterations exceeded!');
 endfunction
