@@ -1,6 +1,4 @@
-# Isabela Vegini de Matos 8531362
-
-function w = diferencasfinitas(a,b,alpha,beta,N,TOL,M,f)
+function w = finiteDifferences(a,b,alpha,beta,N,TOL,M,f)
   h = (b-a)/(N+1); 
   w = zeros(1,N+2);
   w(1) = alpha;
@@ -69,5 +67,5 @@ function w = diferencasfinitas(a,b,alpha,beta,N,TOL,M,f)
     endif
     k = k+1;
   endwhile
-  disp('Numero maximo de iteracoes excedido');
+  disp('Maximum number of iterations exceeded!');
 endfunction
