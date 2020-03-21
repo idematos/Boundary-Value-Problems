@@ -8,4 +8,4 @@ M = 100;
 
 f = @(x,w,z) - (z^2) - w + log(x);
 
-W = nonLinearShooting(a,b,alpha,beta,N,TOL,M,f);
+W = nonLinearShooting2(a,b,alpha,beta,N,TOL,M,f);
