@@ -12,7 +12,7 @@ M = 100;
 
 f = @(x,w,z) - (z^2) - w + log(x);
 
-W = NonLinearShooting(a,b,alpha,beta,N,TOL,M,f);
+W = nonLinearShooting(a,b,alpha,beta,N,TOL,M,f);
 
 x = a:h:b;
 plot(x,W(1,:),x,log(x));
