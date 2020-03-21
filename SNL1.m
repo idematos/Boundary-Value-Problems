@@ -1,5 +1,3 @@
-# Isabela Vegini de Matos 8531362
-
 a = 1;
 b = 5;
 
@@ -12,9 +10,9 @@ h = (b-a)/N;
 TOL = 0.001;
 M = 100;
 
-f = @(x,w,z) -(z^2)-w+log(x);
+f = @(x,w,z) - (z^2) - w + log(x);
 
-W = shootingnaolinear(a,b,alpha,beta,N,TOL,M,f);
+W = NonLinearShooting(a,b,alpha,beta,N,TOL,M,f);
 
 x = a:h:b;
 plot(x,W(1,:),x,log(x));
