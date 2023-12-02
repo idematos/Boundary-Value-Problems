@@ -1,2 +1,2 @@
 # boundaryvalueproblems
-Numerical analysis of two nonlinear boundary value problems with nonlinear shooting method and finite differences method. 
+Numerical analysis of two nonlinear boundary value problems using a combination of Nonlinear Shooting and Finite Differences methods.
